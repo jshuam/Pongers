@@ -7,11 +7,15 @@
 #include "MainMenu.h"
 #include "PlayerPaddle.h"
 #include "GameObjectManager.h"
+#include "GameBall.h"
 
 class Game
 {
 public:
 	static void Start();
+	static sf::Clock& GetClock();
+	const static int SCREEN_WIDTH = 1024;
+	const static int SCREEN_HEIGHT = 768;
 
 private:
 	static bool IsExiting();
@@ -32,5 +36,6 @@ private:
 
 	static GameState _gameState;
 	static sf::RenderWindow _mainWindow;
+	static sf::Clock _clock;
 	static GameObjectManager _gameObjectManager;
 };

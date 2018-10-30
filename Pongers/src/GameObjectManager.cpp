@@ -1,4 +1,5 @@
 #include "GameObjectManager.h"
+#include "Game.h"
 
 GameObjectManager::GameObjectManager() {}
 
@@ -39,4 +40,12 @@ void GameObjectManager::DrawAll(sf::RenderWindow& window)
 {
 	for (const auto& _gameObject : _gameObjects)
 		_gameObject.second->Draw(window);
+}
+
+void GameObjectManager::UpdateAll()
+{
+	sf::Time timeDelta = Game::GetClock().restart();
+
+	for (const auto& _gameObject : _gameObjects)
+		_gameObject.second->Update(timeDelta);
 }

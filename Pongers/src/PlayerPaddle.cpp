@@ -8,7 +8,7 @@ PlayerPaddle::PlayerPaddle() : _velocity(0), _maxVelocity(600.0f)
 	Load("assets/Paddle.png");
 	assert(IsLoaded());
 
-	GetSprite().setOrigin(GetSprite().getGlobalBounds().left / 2, GetSprite().getGlobalBounds().top / 2);
+	GetSprite().setOrigin(GetSprite().getGlobalBounds().width / 2, GetSprite().getGlobalBounds().height / 2);
 }
 
 PlayerPaddle::~PlayerPaddle()
@@ -24,17 +24,17 @@ float PlayerPaddle::GetVelocity() const
 	return _velocity;
 }
 
-void PlayerPaddle::Update(float elapsedTime)
+void PlayerPaddle::Update(sf::Time elapsedTime)
 {
-	if (Game::GetInput().IsKeyDown(sf::Keyboard::Left))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
 	{
 		_velocity -= 3.0f;
 	}
-	if (Game::GetInput().IsKeyDown(sf::Keyboard::Right))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
 	{
 		_velocity += 3.0f;
 	}
-	if (Game::GetInput().IsKeyDown(sf::Keyboard::Down))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
 	{
 		_velocity = 3.0f;
 	}
@@ -45,11 +45,10 @@ void PlayerPaddle::Update(float elapsedTime)
 
 	sf::Vector2f pos = this->GetPosition();
 
-	if (pos.x < GetSprite().getGlobalBounds().left / 2
-		|| pos.x >(Game::SCREEN_WIDTH - GetSprite().getGlobalBounds.left / 2))
+	if (pos.x < GetSprite().getGlobalBounds().width / 2 || pos.x > Game::SCREEN_WIDTH - GetSprite().getGlobalBounds().width / 2)
 	{
 		_velocity = -_velocity;
 	}
-
-	GetSprite().move(_velocity * elapsedTime, 0);
+	
+	GetSprite().move(_velocity * (elapsedTime.asSeconds()), 0);
 }

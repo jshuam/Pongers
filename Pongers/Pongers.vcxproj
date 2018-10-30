@@ -150,6 +150,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameBall.cpp" />
     <ClCompile Include="src\GameObjectManager.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\MainMenu.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="src\VisibleGameObject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameBall.h" />
     <ClInclude Include="src\GameObjectManager.h" />
     <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\MainMenu.h" />

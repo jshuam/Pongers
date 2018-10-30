@@ -8,7 +8,7 @@ public:
 	PlayerPaddle();
 	~PlayerPaddle();
 
-	void Update(float elapsedTime);
+	void Update(sf::Time elapsedTime);
 	void Draw(sf::RenderWindow& window);
 
 	float GetVelocity() const;
